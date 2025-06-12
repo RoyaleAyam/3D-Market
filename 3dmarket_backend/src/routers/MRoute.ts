@@ -1,5 +1,5 @@
 import express from "express"
-import { getAllMotorbike, createM, updateM, deleteM, getMotorById } from "../controllers/MController"
+import { getAllAssets, createAsset, updateAsset, deleteAsset, getAssetById } from "../controllers/MController"
 import { verifyAddM, verifyEditM } from "../middlewares/MValidation"
 import { verifyRole, verifyToken } from "../middlewares/authorization"
 import uploadFile from "../middlewares/menuUpload"
@@ -7,12 +7,12 @@ import uploadFile from "../middlewares/menuUpload"
 const app = express()
 app.use(express.json())
 
-app.get(`/`, [verifyToken, verifyRole(["ADMIN","USER"])], getAllMotorbike)
+app.get(`/`, [verifyToken, verifyRole(["ADMIN","USER"])], getAllAssets)
 
-app.get(`/getMotorById/:id`, [verifyToken, verifyRole(["ADMIN","USER"])], getMotorById)
+app.get(`/getAssetById/:id`, [verifyToken, verifyRole(["ADMIN","USER"])], getAssetById)
 
-app.post(`/createM`, [verifyToken, verifyRole(["ADMIN"]), uploadFile.single("motorbike_picture"), verifyAddM], createM)
-app.put(`/:id`, [verifyToken, verifyRole(["ADMIN"]), uploadFile.single("motorbike_picture"), verifyEditM], updateM)
-app.delete(`/:id`, [verifyToken, verifyRole(["ADMIN"])], deleteM)
+app.post(`/createAsset`, [verifyToken, verifyRole(["ADMIN"]), uploadFile.single("asset_picture"), verifyAddM], createAsset)
+app.put(`/:id`, [verifyToken, verifyRole(["ADMIN"]), uploadFile.single("asset_picture"), verifyEditM], updateAsset)
+app.delete(`/:id`, [verifyToken, verifyRole(["ADMIN"])], deleteAsset)
 
 export default app

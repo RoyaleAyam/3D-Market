@@ -11,7 +11,11 @@ type PropsLayout = {
 }
 
 const LoginLayout = ({ children }: PropsLayout) => {
-  return <div>{children}</div>
+  return (
+    <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700">
+      {children}
+    </div>
+  )
 }
 
 export default LoginLayout

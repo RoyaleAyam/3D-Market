@@ -123,7 +123,7 @@ const UserTemplate = ({ children, id, title, user, menuList }: UserProp) => {
   }
 
   return (
-    <div className="flex h-screen overflow-hidden bg-gray-50">
+    <div className="flex h-screen overflow-hidden bg-dashboard-gradient">
       {/* Sidebar - Fixed position, doesn't scroll with content */}
       <motion.aside
         initial={false}
@@ -132,26 +132,26 @@ const UserTemplate = ({ children, id, title, user, menuList }: UserProp) => {
           x: sidebarOpen ? 0 : "-100%",
         }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
-        className={cn("fixed top-0 left-0 z-40 h-full bg-white border-r border-gray-200 overflow-y-auto shadow-lg")}
+        className={cn("fixed top-0 left-0 z-40 h-full glass-card border-r border-white/10 overflow-y-auto shadow-lg")}
       >
         {/* Sidebar Header */}
-        <div className="p-4 border-b border-gray-200 bg-gradient-to-r from-blue-900 to-blue-700 flex items-center">
-          <Link href="/user/dashboard" className="flex items-center space-x-2 text-white">
+        <div className="p-4 border-b border-white/10 bg-secondary flex items-center">
+          <Link href="/user/dashboard" className="flex items-center space-x-2 text-primary">
             <Image
-              src="/image/Logo_Horizon.png"
+              src="/image/Logo_ThreeDimensions.png"
               alt="Horizon Logo"
               width={40}
               height={40}
               className="rounded-full bg-white p-1"
             />
-            <span className="font-bold text-xl">HORIZON</span>
+            <span className="font-bold text-xl">ThreeDimensions</span>
           </Link>
         </div>
 
         {/* User Profile */}
-        <div className="p-4 border-b border-gray-200">
+        <div className="p-4 border-b border-white/10">
           <div className="flex items-center space-x-3">
-            <div className="relative h-12 w-12 rounded-full overflow-hidden border-2 border-blue-300 shadow-md">
+            <div className="relative h-12 w-12 rounded-full overflow-hidden border-2 border-accent shadow-md">
               {user?.profile_picture ? (
                 <Image
                   src={`${BASE_IMAGE_PROFILE}/${user.profile_picture}?v=${forceUpdate}-${new Date().getTime()}`}
@@ -168,8 +168,8 @@ const UserTemplate = ({ children, id, title, user, menuList }: UserProp) => {
               )}
             </div>
             <div className="flex-1">
-              <div className="font-medium text-blue-900 truncate">{userName || "User"}</div>
-              <div className="text-sm text-blue-700 truncate">Manager Staff</div>
+              <div className="font-medium text-primary truncate">{userName || "User"}</div>
+              <div className="text-sm text-secondary-dark truncate">Manager Staff</div>
             </div>
           </div>
         </div>
@@ -199,11 +199,11 @@ const UserTemplate = ({ children, id, title, user, menuList }: UserProp) => {
         )}
       >
         {/* Fixed Header - Always visible */}
-        <header className="sticky top-0 z-30 bg-gradient-to-r from-blue-900 to-blue-700 text-white px-4 py-3 flex items-center justify-between shadow-md">
+        <header className="sticky top-0 z-30 bg-secondary text-primary px-4 py-3 flex items-center justify-between shadow-md">
           <div className="flex items-center">
             <button
               onClick={toggleSidebar}
-              className="text-white hover:bg-blue-800 p-2 rounded-md focus:outline-none transition-transform duration-300"
+              className="text-primary hover:bg-accent/20 p-2 rounded-md focus:outline-none transition-transform duration-300"
               aria-label={sidebarOpen ? "Close sidebar" : "Open sidebar"}
               style={{ transform: sidebarOpen ? "rotate(180deg)" : "rotate(0deg)" }}
             >
@@ -260,7 +260,7 @@ const UserTemplate = ({ children, id, title, user, menuList }: UserProp) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.3 }}
-            className="flex-1 overflow-y-auto p-4 bg-gray-50"
+            className="flex-1 overflow-y-auto p-4 bg-primary"
           >
             {children}
           </motion.main>

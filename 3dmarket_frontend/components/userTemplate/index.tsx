@@ -138,7 +138,7 @@ const UserTemplate = ({ children, id, title, user, menuList }: UserProp) => {
         <div className="p-4 border-b border-gray-200 bg-gradient-to-r from-blue-900 to-blue-700 flex items-center">
           <Link href="/user/dashboard" className="flex items-center space-x-2 text-white">
             <Image
-              src="/image/Logo_Horizon.png"
+              src="/image/Logo_ThreeDimensions.png"
               alt="Horizon Logo"
               width={40}
               height={40}

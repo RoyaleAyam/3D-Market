@@ -33,7 +33,7 @@ const PageTransition = ({ children }: { children: ReactNode }) => {
 
 const RootLayout = ({ children }: PropsLayout) => {
   return (
-    <UserTemplate title="Motorcycle Products" id="product" menuList={MenuList}>
+    <UserTemplate title="3D Assets" id="product" menuList={MenuList}>
       <PageTransition>{children}</PageTransition>
       <ToastContainer containerId={`toastMenu`} />
     </UserTemplate>

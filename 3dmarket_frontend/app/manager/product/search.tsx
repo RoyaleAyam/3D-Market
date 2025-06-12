@@ -41,7 +41,7 @@ const Search = ({ url, search }: Props) => {
         className={`pl-12 text-sm w-full rounded-lg p-3 bg-white border ${
           isFocused ? "border-blue-500 ring-2 ring-blue-100" : "border-gray-200"
         } focus:border-blue-500 focus:outline-none transition-all duration-300`}
-        placeholder="Search motorcycles by name, category..."
+        placeholder="Search asset by name, category..."
         onKeyUp={handleSearch}
       />
       {keyword && (

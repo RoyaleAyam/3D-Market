@@ -1,4 +1,3 @@
-
 import type React from "react"
 
 import { useState, useEffect } from "react"
@@ -98,7 +97,7 @@ export default function PurchaseForm({ isOpen, onClose, motorId, motorName }: Pu
     }
 
     if (!motorId) {
-      toast.error("Invalid motorcycle selection", { containerId: "toastMenu" })
+      toast.error("Invalid 3D Asset selection", { containerId: "toastMenu" })
       return
     }
 
@@ -149,12 +148,11 @@ export default function PurchaseForm({ isOpen, onClose, motorId, motorName }: Pu
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-md">
         <DialogHeader>
-          <DialogTitle className="text-xl font-bold text-amber-900">Purchase Motorcycle</DialogTitle>
+          <DialogTitle className="text-xl font-bold text-amber-900">Purchase 3D Asset</DialogTitle>
           <DialogDescription className="text-amber-700">
-            Complete the form below to purchase your motorcycle
+            Complete the form below to purchase your 3D Asset
           </DialogDescription>
         </DialogHeader>
-
         <form onSubmit={handleSubmit} className="space-y-6">
           {motorName && (
             <div className="mb-4 p-4 bg-amber-50 rounded-lg border border-amber-200">
@@ -270,7 +268,7 @@ export default function PurchaseForm({ isOpen, onClose, motorId, motorName }: Pu
                 <h3 className="font-medium mb-2 text-amber-900">Order Summary</h3>
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between">
-                    <span className="text-amber-700">Product:</span>
+                    <span className="text-amber-700">3D Asset:</span>
                     <span className="font-medium text-amber-900">{motorName}</span>
                   </div>
                   <div className="flex justify-between">

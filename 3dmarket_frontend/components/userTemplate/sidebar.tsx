@@ -32,6 +32,7 @@ const SidebarComponent = ({ children, id, title, user }: UserProp) => {
   const [forceUpdate, setForceUpdate] = useState(0)
   const router = useRouter()
   const pathname = usePathname()
+  const { state } = require('@/components/ui/sidebar').useSidebar();
 
   useEffect(() => {
     const name = getCookie("name")
@@ -65,11 +66,13 @@ const SidebarComponent = ({ children, id, title, user }: UserProp) => {
     <SidebarProvider defaultOpen={false}>
       <div className="flex min-h-screen bg-gray-50">
         {/* Sidebar */}
-        <Sidebar className="border-r border-gray-200">
+        <Sidebar
+          className={`border-r border-gray-200 transition-colors duration-300 ${state === 'expanded' ? 'bg-white' : ''}`}
+        >
           <SidebarHeader className="flex items-center border-b border-gray-200 py-4 bg-gradient-to-r from-blue-900 to-blue-700 text-white">
             <div className="flex items-center space-x-2 px-4">
               <Image
-                src="/image/Logo_Horizon.png"
+                src="/image/Logo_ThreeDimensions.png"
                 alt="Horizon Logo"
                 width={40}
                 height={40}

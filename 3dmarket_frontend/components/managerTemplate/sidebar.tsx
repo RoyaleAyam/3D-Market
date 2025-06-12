@@ -69,7 +69,7 @@ const SidebarComponent = ({ children, id, title, user }: UserProp) => {
           <SidebarHeader className="flex items-center border-b border-gray-200 py-4 bg-gradient-to-r from-blue-900 to-blue-700 text-white">
             <div className="flex items-center space-x-2 px-4">
               <Image
-                src="/image/Logo_Horizon.png"
+                src="/image/Logo_ThreeDimensions.png"
                 alt="Horizon Logo"
                 width={40}
                 height={40}

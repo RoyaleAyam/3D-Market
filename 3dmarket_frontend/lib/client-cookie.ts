@@ -18,11 +18,10 @@ export const storeCookie = (key: string, value: string) => {
   try {
     // Try to parse to ensure it's valid JSON
     JSON.parse(value)
-    // Store as is if it's valid JSON
-    Cookies.set(key, value, { expires: 1 })
+    Cookies.set(key, value, { expires: 1, path: "/" }) // Ensure cookie is set for root path
   } catch {
     // If not JSON, store as is
-    Cookies.set(key, value, { expires: 1 })
+    Cookies.set(key, value, { expires: 1, path: "/" }) // Ensure cookie is set for root path
   }
 }
 
