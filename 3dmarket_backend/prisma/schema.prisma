@@ -1,0 +1,126 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  USER
+}
+
+enum Class {
+  CC_150_225
+  CC_250_UP
+}
+
+enum Payment {
+  CASH
+  BANK
+}
+
+enum Status {
+  NEW
+  DONE
+}
+
+enum STNK {
+  YES
+  NO
+}
+
+enum BPKB {
+  YES
+  NO
+}
+
+enum kilometer{
+  KM0_KM900
+  KM1000_KM2999
+  KM3000_KM4999
+  KM5000_KM6999
+  KM7000_UP
+}
+
+enum Brand {
+  HONDA
+  YAMAHA
+  SUZUKI
+  KAWASAKI
+  DUCATI
+  KTM
+  BMW
+  APRILIA
+  HARLEY_DAVIDSON
+  TRIUMPH
+}
+
+
+model User {
+  id              Int      @id @default(autoincrement())
+  uuid            String   @unique @default("")
+  name            String   @default("")
+  email           String   @unique @default("")
+  password        String   @default("")
+  profile_picture String   @default("")
+  role            Role     @default(USER)
+  phone_number    String   @default("")
+  // address         String   @default("") @db.Text
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  orderDetail     Order[]
+}
+
+model Motorbike {
+  id          Int         @id @default(autoincrement())
+  uuid        String      @unique @default("")
+  name        String      @default("")
+  brand       Brand       @default(HONDA)
+  Class       Class       @default(CC_150_225)
+  price       Int         @default(0)
+  tax         String      @default("")
+  kilometer   kilometer   @default(KM0_KM900)
+  BPKB        BPKB        @default(NO)
+  STNK        STNK        @default(NO)
+  description String      @default("") @db.Text
+  motorbike_picture     String      @default("")
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  orderLists  OrderList[]
+}
+
+model Order {
+  id             Int         @id @default(autoincrement())
+  uuid           String      @unique @default("")
+  total_price    Int         @default(0)
+  payment_method Payment     @default(CASH)
+  status         Status      @default(NEW)
+  address        String      @default("") @db.Text
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
+  orderLists     OrderList[]
+  User           User?       @relation(fields: [userId], references: [id])
+  userId         Int?
+}
+
+model OrderList {
+  id             Int      @id @default(autoincrement())
+  uuid           String   @unique @default("")
+  note           String   @default("") @db.Text
+  quantity       Int      @default(0)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  Motorbike      Motorbike?    @relation(fields: [MotorbikeId], references: [id])
+  MotorbikeId    Int?
+  Order          Order?   @relation(fields: [orderId], references: [id])
+  orderId        Int?
+}
